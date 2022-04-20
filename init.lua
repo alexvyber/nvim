@@ -1,6 +1,9 @@
 -- If packer is not installed, should we install it?
 if require('vyber.is_packer_installed')() then return end
 
+-- Plugins
+require('vyber.plugins')
+
 -- Remap # to leader 
 vim.cmd([[ map # <Nop> ]]) -- Remap # to to do nothing first
 vim.g.mapleader = '#'
@@ -37,9 +40,6 @@ config_utils.register({
 
 -- Turn off builtin plugins.
 require 'vyber.disable_builtin'
-
--- Plugins
-require('vyber.plugins')
 
 -- https://github.com/numToStr/Comment.nvim
 require('Comment').setup()
