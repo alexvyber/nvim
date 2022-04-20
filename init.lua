@@ -1,189 +1,60 @@
-vim.cmd([[
-  map # <Nop>
-  ]])
+-- If packer is not installed, should we install it?
+if require('vyber.is_packer_installed')() then return end
+
+-- Remap # to leader 
+vim.cmd([[ map # <Nop> ]]) -- Remap # to to do nothing first
 vim.g.mapleader = '#'
+
+-- ·············································································
+-- HACK  I was just learning lua and its possibilities
+-- TODO  make rid of this
+local vimrc_opts = {
+    -- 'ab',
+    'sets',
+    'color',
+    -- 'mappings',
+    -- 'airline'
+    -- 'commands',
+    -- 'configs',
+    -- 'fzf',
+    -- 'go',
+    -- 'nerdtree',
+    -- 'plugins',
+    -- 'snippets',
+    -- 'TODO'
+}
+require('tmp.vimrc').setup(vimrc_opts)
 
 local config_utils = require('vyber.utils')
 local editor_settings = require('vyber.editor_settings')
 
 config_utils.register_global_vars(editor_settings.GLOBAL_VARS)
 config_utils.register({
-  options     = editor_settings.OPTIONS,
-  keymaps     = editor_settings.KEYMAPS,
-  autocmds    = editor_settings.AUTOCMDS,
+    options = editor_settings.OPTIONS,
+    keymaps = editor_settings.KEYMAPS,
+    autocmds = editor_settings.AUTOCMDS
 })
 
+-- Turn off builtin plugins.
+require 'vyber.disable_builtin'
+
+-- Plugins
 require('vyber.plugins')
 
-local VIMRC = require('helpers.read_file')
-settings = {
-'ab',
-'sets',
-'color',
-'mappings',
-'airline',
--- 'commands',
--- 'configs',
--- 'fzf',
--- 'go',
--- 'nerdtree',
--- 'plugins',
--- 'snippets',
--- 'TODO'
-}
-
-base_path = '/home/alexs/.config/vim/'
-
- for _, setting in pairs(settings)  do
-   vim.cmd(VIMRC.take(base_path .. setting .. '.vim'))
- end
-
--- vim.cmd("set bg=dark")
-
---require('av.profile')
---require('av.colors')
-
--- On your init.lua
---require("codelens_extensions").setup {
---    init_rust_commands = false,
---}
--- On your lsp config
---vim.lsp.commands["rust-analyzer.runSingle"] = function(command)
---  require("codelens_extensions.rust-runnables").run_command(command.arguments[1].args)
---end
---require('av.lsp')
---require('av.globals')
-
+-- https://github.com/numToStr/Comment.nvim
 require('Comment').setup()
-require("todo-comments").setup({ keywords = { TODO = { alt = { "WIP" } } } })
---require('av.telescope.setup')
---require('av.telescope.mappings')
+
+-- https://github.com/folke/todo-comments.nvim
+require('todo-comments').setup({keywords = {TODO = {alt = {'WIP'}}}})
+
+-- Treesitter
+local treesitter_opts = require('vyber.treesitter-opts')
+require'nvim-treesitter.configs'.setup(treesitter_opts)
 
 vim.g.snippets = 'luasnip'
 
+require('vyber.lsp')
 
---  ············································································
---  https://github.com/sidebar-nvim/sidebar.nvim
-
-local sidebar = require("sidebar-nvim")
-local opts = {
-open = false,
-side = "right",
-initial_width = 60,
-hide_statusline = true,
-}
-
-sidebar.setup(opts)
-
---  ············································································
---  https://github.com/romgrk/barbar.nvim
-
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
--- Move to previous/next
-map('n', '<A-,>', ':BufferPrevious<CR>', opts)
-map('n', '<A-.>', ':BufferNext<CR>', opts)
--- Re-order to previous/next
-map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
-map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
--- Goto buffer in position...
-map('n', '<A-1>', ':BufferGoto 1<CR>', opts)
-map('n', '<A-2>', ':BufferGoto 2<CR>', opts)
-map('n', '<A-3>', ':BufferGoto 3<CR>', opts)
-map('n', '<A-4>', ':BufferGoto 4<CR>', opts)
-map('n', '<A-5>', ':BufferGoto 5<CR>', opts)
-map('n', '<A-6>', ':BufferGoto 6<CR>', opts)
-map('n', '<A-7>', ':BufferGoto 7<CR>', opts)
-map('n', '<A-8>', ':BufferGoto 8<CR>', opts)
-map('n', '<A-9>', ':BufferGoto 9<CR>', opts)
-map('n', '<A-0>', ':BufferLast<CR>', opts)
--- Close buffer
-map('n', '<A-c>', ':BufferClose<CR>', opts)
--- Wipeout buffer
---                 :BufferWipeout<CR>
--- Close commands
---                 :BufferCloseAllButCurrent<CR>
---                 :BufferCloseBuffersLeft<CR>
---                 :BufferCloseBuffersRight<CR>
--- Magic buffer-picking mode
-map('n', '<C-p>', ':BufferPick<CR>', opts)
--- Sort automatically by...
-map('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>', opts)
-map('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
-map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
-
--- Other:
--- :BarbarEnable - enables barbar (enabled by default)
--- :BarbarDisable - very bad command, should never be used
-
--- Set barbar's options
-vim.g.bufferline = {
-  -- Enable/disable animations
-  animation = true,
-
-  -- Enable/disable auto-hiding the tab bar when there is a single buffer
-  auto_hide = false,
-
-  -- Enable/disable current/total tabpages indicator (top right corner)
-  tabpages = true,
-
-  -- Enable/disable close button
-  closable = true,
-
-  -- Enables/disable clickable tabs
-  --  - left-click: go to buffer
-  --  - middle-click: delete buffer
-  clickable = true,
-
-  -- Excludes buffers from the tabline
-  exclude_ft = {'javascript'},
-  exclude_name = {'package.json'},
-
-  -- Enable/disable icons
-  -- if set to 'numbers', will show buffer index in the tabline
-  -- if set to 'both', will show buffer index and icons in the tabline
-  icons = 'both' ,
-
-  -- If set, the icon color will follow its corresponding buffer
-  -- highlight group. By default, the Buffer*Icon group is linked to the
-  -- Buffer* group (see Highlighting below). Otherwise, it will take its
-  -- default value as defined by devicons.
-  icon_custom_colors = false,
-
-  -- Configure icons on the bufferline.
-  icon_separator_active = '',
-  icon_separator_inactive = '',
-  icon_close_tab = '✗',
-  icon_close_tab_modified = '●',
-  icon_pinned = 'ˇ',
-
-  -- If true, new buffers will be inserted at the start/end of the list.
-  -- Default is to insert after current buffer.
-  insert_at_end = false,
-  insert_at_start = false,
-
-  -- Sets the maximum padding width with which to surround each tab
-  maximum_padding = 1,
-
-  -- Sets the maximum buffer name length.
-  maximum_length = 30,
-
-  -- If set, the letters for each buffer in buffer-pick mode will be
-  -- assigned based on their name. Otherwise or in case all letters are
-  -- already assigned, the behavior is to assign letters in order of
-  -- usability (see order below)
-  semantic_letters = true,
-
-  -- New buffer letters are assigned in this order. This order is
-  -- optimal for the qwerty keyboard layout but might need adjustement
-  -- for other layouts.
-  letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
-
-  -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
-  -- where X is the buffer number. But only a static string is accepted here.
-  no_name_title = nil,
-}
--- TODO
--- FIX
--- NOTE
+-- https://github.com/sidebar-nvim/sidebar.nvim
+local sidebar_opts = require('vyber.sidebar-nvim-opts')
+require('sidebar-nvim').setup(sidebar_opts)
