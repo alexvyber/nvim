@@ -25,8 +25,17 @@ return require('packer').startup {
             end
         }
 
+        --  TODO  play with it
+        use 'preservim/tagbar' -- easy way to browse the tags of the current file
+
         -- How it looks
         use 'alexvyber/vim-one' -- theme (includes both One Dark and One Light)
+        -- use 'vim-airline/vim-airline'
+        -- use 'vim-airline/vim-airline-themes'
+
+
+        -- used by lsp
+        use 'tjdevries/nlua.nvim'
 
         -- Pretty colors
         use 'norcalli/nvim-colorizer.lua'
@@ -73,6 +82,7 @@ return require('packer').startup {
             end
         }
 
+-- use 'tjdevries/tree-sitter-lua'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
 

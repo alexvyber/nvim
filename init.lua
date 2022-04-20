@@ -8,9 +8,12 @@ require('vyber.plugins')
 vim.cmd([[ map # <Nop> ]]) -- Remap # to to do nothing first
 vim.g.mapleader = '#'
 
+-- require("luasnip.loaders.from_vscode").lazy_load()
+-- require'luasnip'.filetype_extend("go", {})
 -- ·············································································
 -- HACK  I was just learning lua and its possibilities
 -- TODO  make rid of this
+
 local vimrc_opts = {
     'ab',
     'sets',
@@ -31,12 +34,12 @@ require('tmp.vimrc').setup(vimrc_opts)
 local config_utils = require('vyber.utils')
 local editor_settings = require('vyber.editor_settings')
 
-config_utils.register_global_vars(editor_settings.GLOBAL_VARS)
-config_utils.register({
-    options = editor_settings.OPTIONS,
-    keymaps = editor_settings.KEYMAPS,
-    autocmds = editor_settings.AUTOCMDS
-})
+-- config_utils.register_global_vars(editor_settings.GLOBAL_VARS)
+-- config_utils.register({
+--     options = editor_settings.OPTIONS,
+--     keymaps = editor_settings.KEYMAPS,
+--     autocmds = editor_settings.AUTOCMDS
+-- })
 
 vim.cmd([[ set termguicolors ]]) -- Need to be set for colorizer to work
 -- Colorizer https://github.com/norcalli/nvim-colorizer.lua
@@ -54,8 +57,6 @@ require('todo-comments').setup({keywords = {TODO = {alt = {'WIP'}}}})
 -- Treesitter
 local treesitter_opts = require('vyber.treesitter-opts')
 require'nvim-treesitter.configs'.setup(treesitter_opts)
-
-vim.g.snippets = 'luasnip'
 
 require('vyber.lsp')
 
