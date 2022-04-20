@@ -12,7 +12,7 @@ vim.g.mapleader = '#'
 -- HACK  I was just learning lua and its possibilities
 -- TODO  make rid of this
 local vimrc_opts = {
-    -- 'ab',
+    'ab',
     'sets',
     'color',
     -- 'mappings',
@@ -37,6 +37,10 @@ config_utils.register({
     keymaps = editor_settings.KEYMAPS,
     autocmds = editor_settings.AUTOCMDS
 })
+
+vim.cmd([[ set termguicolors ]]) -- Need to be set for colorizer to work
+-- Colorizer https://github.com/norcalli/nvim-colorizer.lua
+require 'colorizer'.setup()
 
 -- Turn off builtin plugins.
 require 'vyber.disable_builtin'
