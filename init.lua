@@ -4,6 +4,7 @@ if require('vyber.is_packer_installed')() then return end
 -- Plugins
 require('vyber.plugins')
 
+
 -- Remap # to leader 
 vim.cmd([[ map # <Nop> ]]) -- Remap # to to do nothing first
 vim.g.mapleader = '#'
@@ -18,7 +19,7 @@ local vimrc_opts = {
     'ab',
     'sets',
     'color',
-    -- 'mappings',
+    'mappings',
     -- 'airline'
     -- 'commands',
     -- 'configs',
@@ -63,3 +64,6 @@ require('vyber.lsp')
 -- https://github.com/sidebar-nvim/sidebar.nvim
 local sidebar_opts = require('vyber.sidebar-nvim-opts')
 require('sidebar-nvim').setup(sidebar_opts)
+
+local themeMod = require('theme')
+vim.o.bg=themeMod

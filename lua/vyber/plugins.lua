@@ -9,7 +9,7 @@ return require('packer').startup {
         ----------------------------------------------
         -- https://github.com/romgrk/barbar.nvim
         --  TODO  Make use of it
-        use 'ThePrimeagen/harpoon'
+        -- use 'ThePrimeagen/harpoon'
 
         use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
         use 'sidebar-nvim/sidebar.nvim'
@@ -33,7 +33,6 @@ return require('packer').startup {
         -- use 'vim-airline/vim-airline'
         -- use 'vim-airline/vim-airline-themes'
 
-
         -- used by lsp
         use 'tjdevries/nlua.nvim'
 
@@ -49,23 +48,24 @@ return require('packer').startup {
         use 'tjdevries/colorbuddy.nvim' -- Used to render treesitter output?
 
         -- Snippents
-        use 'L3MON4D3/LuaSnip'
+        -- use 'L3MON4D3/LuaSnip'
 
         -- LSP Plugins:
         -- NOTE: lspconfig ONLY has configs, for people reading this :)
-        use 'neovim/nvim-lspconfig'
-        use 'wbthomason/lsp-status.nvim'
-        use 'j-hui/fidget.nvim'
+        -- use 'neovim/nvim-lspconfig'
+        -- use 'wbthomason/lsp-status.nvim'
+        -- use 'j-hui/fidget.nvim'
+
         use {
             'ericpubu/lsp_codelens_extensions.nvim',
             config = function()
                 require('codelens_extensions').setup()
             end
         }
-        use 'jose-elias-alvarez/null-ls.nvim'
 
-        use 'tjdevries/lsp_extensions.nvim'
-        use 'onsails/lspkind-nvim'
+        -- use 'jose-elias-alvarez/null-ls.nvim'
+        -- use 'tjdevries/lsp_extensions.nvim'
+        -- use 'onsails/lspkind-nvim'
 
         use 'ray-x/go.nvim'
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -82,15 +82,15 @@ return require('packer').startup {
             end
         }
 
--- use 'tjdevries/tree-sitter-lua'
-        use 'nvim-lua/popup.nvim'
+        -- use 'tjdevries/tree-sitter-lua'
+        -- use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
 
         use 'nvim-telescope/telescope.nvim'
-        use 'nvim-telescope/telescope-fzf-writer.nvim'
-        use 'nvim-telescope/telescope-packer.nvim'
+        -- use 'nvim-telescope/telescope-fzf-writer.nvim'
+        -- use 'nvim-telescope/telescope-packer.nvim'
         use 'nvim-telescope/telescope-fzy-native.nvim'
-        use 'nvim-telescope/telescope-github.nvim'
+        -- use 'nvim-telescope/telescope-github.nvim'
         use 'nvim-telescope/telescope-symbols.nvim'
 
         use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
@@ -115,10 +115,10 @@ return require('packer').startup {
 
         --  TODO  make use of it
         -- STREAM: Alternate file editting and some helpful stuff
-        use {'tpope/vim-projectionist', enable = false}
+        -- use {'tpope/vim-projectionist', enable = false}
 
         -- For narrowing regions of text to look at them alone
-        use {'chrisbra/NrrwRgn', cmd = {'NarrowRegion', 'NarrowWindow'}}
+        -- use {'chrisbra/NrrwRgn', cmd = {'NarrowRegion', 'NarrowWindow'}}
 
         -- use 'tweekmonster/spellrotate.vim'
         -- use 'haya14busa/vim-metarepeat' -- Never figured out how to use this, but looks like fun.
@@ -153,7 +153,7 @@ return require('packer').startup {
 
         --  TODO  Figure it out
         -- Quickfix enhancements. See :help vim-qf
-        use 'romainl/vim-qf'
+        -- use 'romainl/vim-qf'
 
         use {
             'glacambre/firenvim',
@@ -163,8 +163,8 @@ return require('packer').startup {
         -- TODO: Eventually statusline should consume this.
         -- use 'mkitt/tabline.vim'
 
-        use 'kyazdani42/nvim-web-devicons'
-        use 'yamatsum/nvim-web-nonicons'
+        -- use 'kyazdani42/nvim-web-devicons'
+        -- use 'yamatsum/nvim-web-nonicons'
 
         -- TODO: This would be cool to add back, but it breaks sg.nvim for now.
         -- use "lambdalisue/vim-protocol"
@@ -176,7 +176,6 @@ return require('packer').startup {
             use 'folke/twilight.nvim'
         else
             use {'junegunn/goyo.vim', cmd = 'Goyo', disable = use_folke}
-
             use {
                 'junegunn/limelight.vim',
                 after = 'goyo.vim',
@@ -187,21 +186,20 @@ return require('packer').startup {
         --  LANGUAGE:
         -- TODO: Should check on these if they are the best ones
         -- use {'neovimhaskell/haskell-vim', ft = 'haskell'}
-        use {'elzr/vim-json', ft = 'json'}
+        -- use {'elzr/vim-json', ft = 'json'}
         -- use {'goodell/vim-mscgen', ft = 'mscgen'}
         -- use 'PProvost/vim-ps1'
-        use 'justinmk/vim-syntax-extra'
+        -- use 'justinmk/vim-syntax-extra'
 
         -- Typescript
-        if false then
-            use 'jelera/vim-javascript-syntax'
-            use 'othree/javascript-libraries-syntax.vim'
-            use 'leafgarland/typescript-vim'
-            use 'peitalin/vim-jsx-typescript'
-
-            use {'vim-scripts/JavaScript-Indent', ft = 'javascript'}
-            use {'pangloss/vim-javascript', ft = {'javascript', 'html'}}
-        end
+        -- if false then
+        --     use 'jelera/vim-javascript-syntax'
+        --     use 'othree/javascript-libraries-syntax.vim'
+        --     use 'leafgarland/typescript-vim'
+        --     use 'peitalin/vim-jsx-typescript'
+        --     use {'vim-scripts/JavaScript-Indent', ft = 'javascript'}
+        --     use {'pangloss/vim-javascript', ft = {'javascript', 'html'}}
+        -- end
 
         -- Wonder if I can make LSP do this and respect .prettier files.
         -- I don't write enough typescript to think about this.
@@ -215,14 +213,14 @@ return require('packer').startup {
 
         -- Sources
         use 'hrsh7th/nvim-cmp'
-        use 'hrsh7th/cmp-cmdline'
-        use 'hrsh7th/cmp-buffer'
-        use 'hrsh7th/cmp-path'
-        use 'hrsh7th/cmp-nvim-lua'
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/cmp-nvim-lsp-document-symbol'
-        use 'saadparwaiz1/cmp_luasnip'
-        use 'tamago324/cmp-zsh'
+        -- use 'hrsh7th/cmp-cmdline'
+        -- use 'hrsh7th/cmp-buffer'
+        -- use 'hrsh7th/cmp-path'
+        -- use 'hrsh7th/cmp-nvim-lua'
+        -- use 'hrsh7th/cmp-nvim-lsp'
+        -- use 'hrsh7th/cmp-nvim-lsp-document-symbol'
+        -- use 'saadparwaiz1/cmp_luasnip'
+        -- use 'tamago324/cmp-zsh'
 
         -- Comparators
         use 'lukas-reineke/cmp-under-comparator'
@@ -232,24 +230,24 @@ return require('packer').startup {
 
         -- Cool tags based viewer
         --   :Vista  <-- Opens up a really cool sidebar with info about file.
-        use {'liuchengxu/vista.vim', cmd = 'Vista'}
+        -- use {'liuchengxu/vista.vim', cmd = 'Vista'}
 
         -- Find and replace
-        use 'windwp/nvim-spectre'
+        -- use 'windwp/nvim-spectre'
 
         -- Debug adapter protocol
-        use 'mfussenegger/nvim-dap'
-        use 'rcarriga/nvim-dap-ui'
-        use 'theHamsta/nvim-dap-virtual-text'
-        use 'nvim-telescope/telescope-dap.nvim'
+        -- use 'mfussenegger/nvim-dap'
+        -- use 'rcarriga/nvim-dap-ui'
+        -- use 'theHamsta/nvim-dap-virtual-text'
+        -- use 'nvim-telescope/telescope-dap.nvim'
 
-        use 'mfussenegger/nvim-dap-python'
-        use 'jbyuki/one-small-step-for-vimkind'
+        -- use 'mfussenegger/nvim-dap-python'
+        -- use 'jbyuki/one-small-step-for-vimkind'
 
         -- TREE SITTER:
         use 'nvim-treesitter/nvim-treesitter'
-        use 'nvim-treesitter/playground'
-        use 'vigoux/architext.nvim'
+        -- use 'nvim-treesitter/playground'
+        -- use 'vigoux/architext.nvim'
 
         -- TODO: YouTube Highlight
         -- use 'danymat/neogen'
@@ -282,28 +280,28 @@ return require('packer').startup {
             end
         }
 
-        use 'tamago324/lir.nvim'
-        use 'tamago324/lir-git-status.nvim'
+        -- use 'tamago324/lir.nvim'
+        -- use 'tamago324/lir-git-status.nvim'
 
         -- TODO  make use of it
         -- https://github.com/pechorin/any-jump.vim
-        use 'pechorin/any-jump.vim'
+        -- use 'pechorin/any-jump.vim'
 
         -- TODO: Check out macvhakann/vim-sandwich at some point
-        use 'tpope/vim-surround' -- Surround text objects easily
+        -- use 'tpope/vim-surround' -- Surround text objects easily
 
         -- GIT:
-        use 'TimUntersberger/neogit'
+        -- use 'TimUntersberger/neogit'
 
         -- Github integration
-        use 'ruifm/gitlinker.nvim'
+        -- use 'ruifm/gitlinker.nvim'
 
         -- Sweet message committer
-        use 'rhysd/committia.vim'
-        use 'sindrets/diffview.nvim'
+        -- use 'rhysd/committia.vim'
+        -- use 'sindrets/diffview.nvim'
 
         -- Async signs!
-        use 'lewis6991/gitsigns.nvim'
+        -- use 'lewis6991/gitsigns.nvim'
 
         --  TODO  Make use of it
         use { -- Git worktree utility

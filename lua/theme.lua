@@ -1,0 +1,1 @@
+/home/alexs/.config/awesome/theme.lua
