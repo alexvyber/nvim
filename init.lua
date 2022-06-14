@@ -19,7 +19,7 @@ local vimrc_opts = {
     'ab',
     'sets',
     'color',
-    'mappings',
+    -- 'mappings',
     -- 'airline'
     -- 'commands',
     -- 'configs',
