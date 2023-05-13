@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<Space>gs", vim.cmd.Git);
+vim.keymap.set("n", "<Space>gs", vim.cmd.Git)
