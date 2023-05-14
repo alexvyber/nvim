@@ -21,5 +21,3 @@ comment.setup {
     }
   end,
 }
-
-

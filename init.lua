@@ -1,9 +1,10 @@
-require "vyber"
+require "vyber.packer"
+require "vyber.ab"
+require "vyber.remap"
+require "vyber.set"
+require "vyber.options"
 
-local vimrc_opts = {
-  "ab",
-  "mappings",
-}
-
- -- require("tmp.vimrc").setup(vimrc_opts)
-
+-- colorscheme
+-- require "vyber.rose-pine"
+--[[ require "vyber.catppuccin" ]]
+--[[ require "vyber.colors".Colorize() ]]
