@@ -4,6 +4,13 @@ lsp.ensure_installed {
   "tsserver",
   "eslint",
   "rust_analyzer",
+  "gopls",
+  "tailwindcss",
+  "astro",
+  "bashls",
+  "graphql",
+  "prismals",
+  "elixirls",
 }
 
 local cmp = require "cmp"
