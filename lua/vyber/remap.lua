@@ -30,6 +30,7 @@ v( "K", ":m '<-2<CR>gv=gv")
 n( "J", "mzJ`z")
 n( "<C-d>", "<C-d>zz")
 n( "<C-u>", "<C-u>zz")
+n( "<C-w>", ":bd<CR>")
 n( "n", "nzzzv")
 n( "N", "Nzzzv")
 
