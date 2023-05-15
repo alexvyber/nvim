@@ -103,4 +103,7 @@ return require("packer").startup(function(use)
       "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
     },
   }
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
 end)
