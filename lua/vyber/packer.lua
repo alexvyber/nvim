@@ -106,4 +106,11 @@ return require("packer").startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+
+  use {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup()
+    end,
+  }
 end)
